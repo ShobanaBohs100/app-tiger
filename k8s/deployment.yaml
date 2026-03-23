@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-tiger
+  namespace: sre-prototype
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-tiger
+  template:
+    metadata:
+      labels:
+        app: app-tiger
+    spec:
+      containers:
+      - name: app-tiger
+        # We will replace this image tag dynamically in the CI/CD pipeline
+        image: ghcr.io/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME:latest 
+        ports:
+        - containerPort: 8080
+        env:
+        - name: APP_VERSION
+          value: "latest"
