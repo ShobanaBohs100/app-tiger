@@ -47,10 +47,9 @@ jobs:
       - name: Set up Kubectl
         uses: azure/setup-kubectl@v3
         
-      - name: Set Kubeconfig
+      - name: Connect to EKS
         run: |
-          mkdir -p ~/.kube
-          echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > ~/.kube/config
+          aws eks update-kubeconfig --name fusion-trust-dev --region us-east-2
 
       - name: Update Deployment Image & Apply
         run: |
