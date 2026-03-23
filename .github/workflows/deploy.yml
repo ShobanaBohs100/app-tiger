@@ -51,6 +51,9 @@ jobs:
         run: |
           aws eks update-kubeconfig --name fusion-trust-dev --region us-east-2
 
+      - name: Who am I?
+        run: aws sts get-caller-identity
+
       - name: Update Deployment Image & Apply
         run: |
           # Replace the placeholder image with the newly built image tag
@@ -60,4 +63,4 @@ jobs:
           kubectl apply -f k8s/deployment.yaml
           
           # Wait for the rollout to complete
-          kubectl rollout status deployment/chaos-app -n sre-prototype
+          kubectl rollout status deployment/app-tiger -n sre-prototype
