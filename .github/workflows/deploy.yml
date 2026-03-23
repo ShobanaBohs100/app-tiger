@@ -61,6 +61,7 @@ jobs:
           
           # Deploy to the cluster
           kubectl apply -f k8s/deployment.yaml
-          
+          kubectl apply -f k8s/service.yaml  
+
           # Wait for the rollout to complete
           kubectl rollout status deployment/app-tiger -n sre-prototype
