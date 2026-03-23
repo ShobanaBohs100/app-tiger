@@ -64,4 +64,4 @@ jobs:
           kubectl apply -f k8s/service.yaml  
 
           # Wait for the rollout to complete
-          kubectl rollout status deployment/app-tiger -n sre-prototype
+          kubectl rollout status deployment/chaos-app -n sre-prototype
