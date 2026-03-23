@@ -22,3 +22,10 @@ spec:
         env:
         - name: APP_VERSION
           value: "latest"
+        resources:
+          requests:
+            memory: "128Mi"   # The minimum RAM it needs to boot
+            cpu: "100m"       # 1/10th of a CPU core
+          limits:
+            memory: "256Mi"   # THE HARD CAP: It dies if it hits this
+            cpu: "250m"       # 1/4th of a CPU core
